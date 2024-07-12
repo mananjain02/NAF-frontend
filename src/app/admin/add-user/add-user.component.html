@@ -1,2 +1,59 @@
-<button class="btn btn-outline-danger" (click)="onBack()">Back</button>
-<p>Here we will add users</p>
+<button class="btn btn-outline-danger" (click)="onBack()" style="margin: 1rem;">Back</button>
+<div class="createUserFormOuter">
+  <h3 style="padding-bottom: 1rem;">Create User</h3>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="createUserFormInner">
+    <mat-form-field appearance="fill">
+      <mat-label>User Identifier</mat-label>
+      <input matInput formControlName="userIdentifier" required>
+      <mat-error *ngIf="userForm.get('userIdentifier').invalid && userForm.get('userIdentifier').touched">
+        User Identifier is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" required>
+      <mat-error *ngIf="userForm.get('firstName').invalid && userForm.get('firstName').touched">
+        First Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" required>
+      <mat-error *ngIf="userForm.get('lastName').invalid && userForm.get('lastName').touched">
+        Last Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" required>
+      <mat-error *ngIf="userForm.get('password').invalid && userForm.get('password').touched">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="userForm.get('email').invalid && userForm.get('email').touched">
+        Valid Email is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="activeIndicator">Active Indicator</mat-checkbox>
+
+    <mat-form-field appearance="fill">
+      <mat-label>User Role Code</mat-label>
+      <mat-select formControlName="userRoleCode" required>
+        <mat-option *ngFor="let role of userRoles" [value]="role">{{role}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="userForm.get('userRoleCode').invalid && userForm.get('userRoleCode').touched">
+        User Role Code is required
+      </mat-error>
+    </mat-form-field>
+
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Submit</button>
+  </form>
+</div>

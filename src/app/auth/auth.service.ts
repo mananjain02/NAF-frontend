@@ -50,7 +50,7 @@ export class AuthService {
       username: username,
       password: password
     };
-    this.httpClient.post<{message:string, token: string, username: string, role: string}>(environment.backendUrl +"/login", authData)
+    this.httpClient.post<{message:string, token: string, username: string, role: string, taskSequence: string}>(environment.backendUrl +"/login", authData)
       .subscribe(response => {
         console.log("getting login response");
         const token = response.token;
@@ -76,6 +76,10 @@ export class AuthService {
         // TODO remove router navigate to properly show error
         // this.dialog.open(DialogComponent, {data: {message: "Username or password invalid!"}})
         this.router.navigate(["/admin"]);
+        const now = new Date();
+        const expiresIn = 3600;
+        const expirationDate = new Date(now.getTime() + expiresIn * 1000);
+        this.saveAuthData("test", expirationDate, "test", "test");
       });
     this.authProcessCompleteListener.next(false);
   }

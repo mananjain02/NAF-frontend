@@ -1,0 +1,18 @@
+.createUserFormOuter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.createUserFormInner {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+@media (max-width: 700px) {
+  .createUserFormInner {
+    width: 90vw;
+  }
+}

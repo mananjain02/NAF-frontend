@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -16,6 +20,8 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
+import { CreateRoleComponent } from './admin/create-role/create-role.component';
+import { EditRoleComponent } from './admin/edit-role/edit-role.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
     AdminHomeComponent,
     UserListComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    CreateRoleComponent,
+    EditRoleComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,10 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
