@@ -66,20 +66,17 @@ export class AuthService {
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresIn * 1000);
           this.saveAuthData(token, expirationDate, response.username, response.role);
-          console.log("routing to /");
           this.roleSubject.next(response.role);
           this.authProcessCompleteListener.next(false);
-          this.router.navigate(["/"]);
+          console.log("Role:", response.role)
+          if(response.role=='1') {
+            console.log("routing to /admin");
+            this.router.navigate(["/admin"]);
+          }
         }
       },
       () => {
-        // TODO remove router navigate to properly show error
-        // this.dialog.open(DialogComponent, {data: {message: "Username or password invalid!"}})
-        this.router.navigate(["/admin"]);
-        const now = new Date();
-        const expiresIn = 3600;
-        const expirationDate = new Date(now.getTime() + expiresIn * 1000);
-        this.saveAuthData("test", expirationDate, "test", "test");
+        this.dialog.open(DialogComponent, {data: {message: "Username or password invalid!"}})
       });
     this.authProcessCompleteListener.next(false);
   }

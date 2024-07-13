@@ -13,6 +13,10 @@ export class UserListComponent {
     this.router.navigate(['admin','add-user'])
   }
 
+  onAddRole() {
+    this.router.navigate(['admin','create-role'])
+  }
+
   onEditUser() {
     this.router.navigate(['admin','edit-user'])
   }

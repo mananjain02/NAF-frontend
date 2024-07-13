@@ -22,6 +22,7 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { CreateRoleComponent } from './admin/create-role/create-role.component';
 import { EditRoleComponent } from './admin/edit-role/edit-role.component';
+import { RoleListComponent } from './admin/role-list/role-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EditRoleComponent } from './admin/edit-role/edit-role.component';
     AddUserComponent,
     EditUserComponent,
     CreateRoleComponent,
-    EditRoleComponent
+    EditRoleComponent,
+    RoleListComponent
   ],
   imports: [
     BrowserModule,

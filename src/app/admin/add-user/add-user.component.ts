@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AdminService } from 'src/app/auth/admin.service';
+import { AdminService } from 'src/app/admin/admin.service';
 
 @Component({
   selector: 'app-add-user',

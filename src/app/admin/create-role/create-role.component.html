@@ -1,1 +1,40 @@
-<p>create-role works!</p>
+<button class="btn btn-outline-danger" (click)="onBack()" style="margin: 1rem;">Back</button>
+<div class="createRoleFormOuter">
+  <h3 style="padding-bottom: 1rem;">Create Role</h3>
+  <form [formGroup]="roleForm" (ngSubmit)="onSubmit()" class="createRoleFormInner">
+    <mat-form-field appearance="fill">
+      <mat-label>User Role Code</mat-label>
+      <input matInput formControlName="userRoleCode" required>
+      <mat-error *ngIf="roleForm.get('userRoleCode').invalid && roleForm.get('userRoleCode').touched">
+        User Role Code is required and must be a numeric value
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>User Task Sequence</mat-label>
+      <input matInput formControlName="userTaskSeq" required>
+      <mat-error *ngIf="roleForm.get('userTaskSeq').invalid && roleForm.get('userTaskSeq').touched">
+        User Task Sequence is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>User Role Description</mat-label>
+      <input matInput formControlName="userRoleDescription" required>
+      <mat-error *ngIf="roleForm.get('userRoleDescription').invalid && roleForm.get('userRoleDescription').touched">
+        User Role Description is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>User Task</mat-label>
+      <input matInput formControlName="userTask" required>
+      <mat-error *ngIf="roleForm.get('userTask').invalid && roleForm.get('userTask').touched">
+        User Task is required
+      </mat-error>
+    </mat-form-field>
+
+    <button class="btn btn-primary" type="submit" [disabled]="roleForm.invalid">Submit</button>
+  </form>
+</div>
+<app-role-list></app-role-list>

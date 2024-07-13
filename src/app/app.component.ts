@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'NAF-frontend';
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
-    this.authService.logout();
+    // this.authService.logout();
   }
 }

@@ -16,4 +16,14 @@ export class AdminService {
     const url = `${environment.backendUrl}/admin/add-user`;
     return this.httpClient.post(url, userData);
   }
+
+  createRole(roleData: any): Observable<any> {
+    const url = `${environment.backendUrl}/admin/add-role-code`;
+    return this.httpClient.post(url, roleData);
+  }
+
+  getRoles(): Observable<any>  {
+    const url = `${environment.backendUrl}/admin/role-codes`;
+    return this.httpClient.get(url);
+  }
 }
