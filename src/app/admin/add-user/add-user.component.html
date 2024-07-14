@@ -1,5 +1,8 @@
 <button class="btn btn-outline-danger" (click)="onBack()" style="margin: 1rem;">Back</button>
-<div class="createUserFormOuter">
+<div style="display: flex; justify-content: center;" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="createUserFormOuter" *ngIf="!isLoading">
   <h3 style="padding-bottom: 1rem;">Create User</h3>
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="createUserFormInner">
     <mat-form-field appearance="fill">
@@ -47,7 +50,7 @@
     <mat-form-field appearance="fill">
       <mat-label>User Role Code</mat-label>
       <mat-select formControlName="userRoleCode" required>
-        <mat-option *ngFor="let role of userRoles" [value]="role">{{role}}</mat-option>
+        <mat-option *ngFor="let role of roleList" [value]="role.userRoleCode">{{role.userRoleCode}} ({{role.userRoleDescription}})</mat-option>
       </mat-select>
       <mat-error *ngIf="userForm.get('userRoleCode').invalid && userForm.get('userRoleCode').touched">
         User Role Code is required

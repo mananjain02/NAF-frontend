@@ -1,5 +1,42 @@
-<div *ngIf="roleList">
-  <div *ngFor="let role of roleList">
-    <p>{{ role.userRoleCode }}</p>
-  </div>
+<div style="display: flex; justify-content: center;">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div *ngIf="!isLoading" style="padding: 1rem;">
+  <table mat-table [dataSource]="dataSource" matSort [@listAnimation]>
+
+    <!-- User Role Code Column -->
+    <ng-container matColumnDef="userRoleCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User Role Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.userRoleCode}} </td>
+    </ng-container>
+
+    <!-- User Task Seq Column -->
+    <ng-container matColumnDef="userTaskSeq">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User Task Seq </th>
+      <td mat-cell *matCellDef="let element"> {{element.userTaskSeq}} </td>
+    </ng-container>
+
+    <!-- User Role Description Column -->
+    <ng-container matColumnDef="userRoleDescription">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User Role Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.userRoleDescription}} </td>
+    </ng-container>
+
+    <!-- User Task Column -->
+    <ng-container matColumnDef="userTask">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User Task </th>
+      <td mat-cell *matCellDef="let element"> {{element.userTask}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btn btn-outline-primary" (click)="onEdit(element)">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [@listAnimation]></tr>
+  </table>
 </div>

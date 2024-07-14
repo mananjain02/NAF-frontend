@@ -1,10 +1,14 @@
-<button class="btn btn-outline-danger" (click)="onBack()" style="margin: 1rem;">Back</button>
-<div class="createRoleFormOuter">
-  <h3 style="padding-bottom: 1rem;">Create Role</h3>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <button class="btn btn-outline-danger" (click)="onBack()" style="margin: 1rem;">Back</button>
+  <button class="btn btn-outline-success" (click)="toggleForm()" style="margin: 1rem;">{{ toggleButtonText }}</button>
+</div>
+
+<div [@formAnimation]="formState" class="createRoleFormOuter">
+  <h3 style="padding-bottom: 1rem;">{{ title }}</h3>
   <form [formGroup]="roleForm" (ngSubmit)="onSubmit()" class="createRoleFormInner">
     <mat-form-field appearance="fill">
       <mat-label>User Role Code</mat-label>
-      <input matInput formControlName="userRoleCode" required>
+      <input matInput formControlName="userRoleCode" required [readonly]="isEditMode">
       <mat-error *ngIf="roleForm.get('userRoleCode').invalid && roleForm.get('userRoleCode').touched">
         User Role Code is required and must be a numeric value
       </mat-error>
@@ -20,7 +24,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>User Role Description</mat-label>
-      <input matInput formControlName="userRoleDescription" required>
+      <textarea matInput formControlName="userRoleDescription" required></textarea>
       <mat-error *ngIf="roleForm.get('userRoleDescription').invalid && roleForm.get('userRoleDescription').touched">
         User Role Description is required
       </mat-error>
@@ -34,7 +38,12 @@
       </mat-error>
     </mat-form-field>
 
-    <button class="btn btn-primary" type="submit" [disabled]="roleForm.invalid">Submit</button>
+    <div style="display: flex; justify-content: space-between;">
+      <button class="btn btn-primary" style="width: 30%;" type="submit" [disabled]="roleForm.invalid">{{ isEditMode ? 'Update' : 'Submit' }}</button>
+      <button class="btn btn-outline-secondary" style="width: 30%;" type="button" (click)="clearForm()" [disabled]="isEditMode">Clear</button>
+      <button class="btn btn-outline-danger" (click)="toggleForm()" type="button" style="width: 30%;">Cancel</button>
+    </div>
   </form>
 </div>
-<app-role-list></app-role-list>
+
+<app-role-list style="padding: 1rem;"></app-role-list>

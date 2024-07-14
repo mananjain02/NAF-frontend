@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: '', component: UserListComponent },
     { path: 'add-user', component: AddUserComponent },
     { path: 'edit-user', component: EditUserComponent },
-    { path: 'create-role', component: CreateRoleComponent },
+    { path: 'manage-roles', component: CreateRoleComponent },
   ]}
 ];
 

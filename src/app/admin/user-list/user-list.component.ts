@@ -14,7 +14,7 @@ export class UserListComponent {
   }
 
   onAddRole() {
-    this.router.navigate(['admin','create-role'])
+    this.router.navigate(['admin','manage-roles'])
   }
 
   onEditUser() {
